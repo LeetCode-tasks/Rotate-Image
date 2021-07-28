@@ -21,3 +21,25 @@ _**Output:**_ `[[7,4,1],[8,5,2],[9,6,3]]`
 `1 <= n <= 20`
 
 `-1000 <= matrix[i][j] <= 1000`
+
+## Solution in JavaScript
+
+```
+var rotate = function(matrix) {
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = i; j < matrix.length; j++) {
+            let temp = matrix[j][i]
+            matrix[j][i] = matrix[i][j]
+            matrix[i][j] = temp
+        }
+    }
+    
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix.length / 2; j++) {
+            let temp = matrix[i][j]
+            matrix[i][j] = matrix[i][matrix.length - j - 1]
+            matrix[i][matrix.length - j - 1] = temp
+        }
+    }
+};
+```
